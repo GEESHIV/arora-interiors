@@ -1,0 +1,87 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-ivory-100 font-sans text-charcoal-800 antialiased;
+    font-size: 16px;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-serif font-medium;
+  }
+
+  ::selection {
+    @apply bg-gold-400 text-charcoal-900;
+  }
+}
+
+@layer components {
+  .eyebrow {
+    @apply text-xs font-semibold uppercase tracking-[0.3em] text-gold-700;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 text-sm font-semibold tracking-wide transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold-500 focus-visible:ring-offset-2 focus-visible:ring-offset-ivory-100;
+  }
+
+  .btn-gold {
+    @apply bg-gold-500 text-charcoal-900 shadow-sm hover:-translate-y-0.5 hover:bg-gold-400 hover:shadow-lg hover:shadow-gold-500/25;
+  }
+
+  .btn-dark {
+    @apply bg-charcoal-900 text-ivory-100 hover:-translate-y-0.5 hover:bg-walnut-600 hover:shadow-lg;
+  }
+
+  .btn-outline-light {
+    @apply border border-ivory-100/60 text-ivory-100 hover:border-ivory-100 hover:bg-ivory-100 hover:text-charcoal-900;
+  }
+
+  .btn-outline-dark {
+    @apply border border-charcoal-900/25 text-charcoal-900 hover:border-charcoal-900 hover:bg-charcoal-900 hover:text-ivory-100;
+  }
+
+  .field-input {
+    @apply w-full rounded-sm border bg-ivory-50 px-4 py-3 text-sm text-charcoal-900 placeholder:text-charcoal-500 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gold-400/60;
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(32px);
+    transition:
+      opacity 1000ms cubic-bezier(0.16, 1, 0.3, 1),
+      transform 1000ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
